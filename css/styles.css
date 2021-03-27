@@ -19,6 +19,7 @@ html {
   --client-number: 6;
   --bg-characteristic-item: #f5f4fa;
   --bg-footer-link: rgba(255, 255, 255, 0.1);
+  --icon-color: #afb1b8;
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -104,6 +105,7 @@ p {
 .button:focus {
   color: var(--dark-bg-text-color);
   background-color: var(--accent-color);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .buttons {
   display: flex;
@@ -180,27 +182,21 @@ p {
 .header {
   border-bottom: 1px solid #ececec;
 }
-.header-link::before {
-  content: '';
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-  margin-right: 10px;
-}
-.mail-link::before {
-  background-image: url('../images/icons/envelope.svg');
-  width: 16px;
-  height: 12px;
-}
-.tel-link::before {
-  background-image: url('../images/icons/smartphone.svg');
-  width: 10px;
-  height: 16px;
-}
 .header-link {
   display: flex;
   align-items: center;
+}
+.mail-link .icon {
+  width: 16px;
+  height: 12px;
+  fill: currentColor;
+  margin-right: 10px;
+}
+.tel-link .icon {
+  width: 10px;
+  height: 16px;
+  fill: currentColor;
+  margin-right: 10px;
 }
 
 /* studio page */
@@ -254,27 +250,18 @@ p {
   flex-basis: calc((100% - 30px * 4) / 4);
   margin-left: 30px;
 }
-.characteristic-item::before {
-  content: '';
-  display: block;
+.characteristic-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
   height: 120px;
-  margin-bottom: 30px;
   background-color: var(--bg-characteristic-item);
-  background-size: 70px 70px;
-  background-repeat: no-repeat;
-  background-position: center;
+  margin-bottom: 30px;
 }
-.characteristic-item:nth-child(1)::before {
-  background-image: url('../images/characteristic/antenna.svg');
-}
-.characteristic-item:nth-child(2)::before {
-  background-image: url('../images/characteristic/clock.svg');
-}
-.characteristic-item:nth-child(3)::before {
-  background-image: url('../images/characteristic/diagram.svg');
-}
-.characteristic-item:nth-child(4)::before {
-  background-image: url('../images/characteristic/astronaut.svg');
+.characteristic-icon .icon {
+  width: 70px;
+  height: 70px;
 }
 
 /* section with photo */
@@ -338,28 +325,29 @@ p {
   justify-content: center;
 }
 .team-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   width: 45px;
   height: 45px;
   background-color: var(--dark-bg-text-color);
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .team-link-item:not(:last-child) {
   margin-right: 10px;
 }
-
-.link-instagram {
-  background-image: url('../images/social-links/Ellipse-3.svg');
+.team-link .icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--icon-color);
 }
-.link-twitter {
-  background-image: url('../images/social-links/Ellipse-2.svg');
+.team-link:hover,
+.team-link:focus {
+  background-color: var(--accent-color);
 }
-.link-facebook {
-  background-image: url('../images/social-links/Ellipse-1.svg');
-}
-.link-linkedin {
-  background-image: url('../images/social-links/Ellipse.svg');
+.team-link:hover .icon,
+.team-link:focus .icon {
+  fill: var(--dark-bg-text-color);
 }
 
 /*  clients */
@@ -375,32 +363,48 @@ p {
   margin-right: 30px;
 }
 .client-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 170px;
   height: 90px;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 1px solid #afb1b8;
+  border: 1px solid var(--icon-color);
   border-radius: 5px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.client-list-item:nth-child(1) .client-link {
-  background-image: url('../images/clients-logo/logo1.svg');
+.client-link .icon {
+  fill: var(--icon-color);
 }
-.client-list-item:nth-child(2) .client-link {
-  background-image: url('../images/clients-logo/logo2.svg');
+.client-link:hover,
+.client-link:focus {
+  border-color: var(--accent-color);
 }
-.client-list-item:nth-child(3) .client-link {
-  background-image: url('../images/clients-logo/logo3.svg');
+.client-link:hover .icon,
+.client-link:focus .icon {
+  fill: var(--accent-color);
 }
-.client-list-item:nth-child(4) .client-link {
-  background-image: url('../images/clients-logo/logo4.svg');
+.icon-logo-1 {
+  width: 50px;
+  height: 44px;
 }
-.client-list-item:nth-child(5) .client-link {
-  background-image: url('../images/clients-logo/logo5.svg');
+.icon-logo-2 {
+  width: 40px;
+  height: 52px;
 }
-.client-list-item:nth-child(6) .client-link {
-  background-image: url('../images/clients-logo/logo6.svg');
+.icon-logo-3 {
+  width: 41px;
+  height: 42px;
+}
+.icon-logo-4 {
+  width: 80px;
+  height: 42px;
+}
+.icon-logo-5 {
+  width: 59px;
+  height: 47px;
+}
+.icon-logo-6 {
+  width: 88px;
+  height: 45px;
 }
 
 /* portfolio page */
@@ -437,6 +441,15 @@ p {
 .project-title {
   margin-bottom: 5px;
 }
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+.project-link:hover .project-link-thumb,
+.project-link:focus .project-link-thumb {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+}
 
 /* footer section */
 
@@ -471,7 +484,9 @@ p {
   margin-top: 15px;
 }
 .footer-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 45px;
   height: 45px;
   background-repeat: no-repeat;
@@ -483,21 +498,14 @@ p {
 .footer-link:focus {
   background-color: var(--accent-color);
 }
+.footer-link .icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--dark-bg-text-color);
+}
 .footer-link-list {
   display: flex;
   justify-content: center;
-}
-.footer-link-item:nth-child(1) .footer-link {
-  background-image: url('../images/social-links-footer/instagram.svg');
-}
-.footer-link-item:nth-child(2) .footer-link {
-  background-image: url('../images/social-links-footer/twitter.svg');
-}
-.footer-link-item:nth-child(3) .footer-link {
-  background-image: url('../images/social-links-footer/facebook.svg');
-}
-.footer-link-item:nth-child(4) .footer-link {
-  background-image: url('../images/social-links-footer/linkedin.svg');
 }
 .footer-link-item:not(:last-child) {
   margin-right: 10px;
